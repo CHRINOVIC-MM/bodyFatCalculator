@@ -42,7 +42,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    BMIApp()
+                    FATApp()
                 }
             }
         }
@@ -50,7 +50,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun BMIApp() {
+fun FATApp() {
     Column {
         Row(
             modifier = Modifier
@@ -68,12 +68,12 @@ fun BMIApp() {
             )
         }
         Spacer(modifier = Modifier.height(60.dp))
-        BMICalculator()
+        FATCalculator()
     }
 
 }
 
-fun getBMIDescription(fat: Float): String {
+fun getFatDescription(fat: Float): String {
     return when {
         fat <= 18.5 -> "underweight"
         fat > 18.5 && fat <= 24.9 -> "healthy weight"
@@ -86,7 +86,7 @@ fun getBMIDescription(fat: Float): String {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BMICalculator() {
+fun FATCalculator() {
     var weight by remember { mutableStateOf("") }
     var height by remember { mutableStateOf("") }
     var imc by remember { mutableStateOf(0f) }
@@ -180,12 +180,12 @@ fun BMICalculator() {
             modifier = Modifier.fillMaxWidth(0.8f)
         )
         Spacer(modifier = Modifier.height(24.dp))
-        Text(text = "You are ${getBMIDescription(fat)} \nYour Body fact is: $fat")
+        Text(text = "You are ${getFatDescription(fat)} \nYour Body fact is: $fat")
     }
 }
 
 @Preview
 @Composable
-fun BMICalculatorPreview() {
-    BMICalculator()
+fun FATCalculatorPreview() {
+    FATCalculator()
 }
